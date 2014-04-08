@@ -1,7 +1,6 @@
 /*
  *  client.c
  *
- *  Created by Miguel Lastras on 2/14/13.
  *  Modified by Evan Graves on 2/25/13
  * 
  *  Client Program
