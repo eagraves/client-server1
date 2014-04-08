@@ -1,0 +1,11 @@
+Usage: ./server [port] [connection type]
+       ./client [hostname] [port] [connection type]
+
+Example: ./server 4845 UDP
+         ./client 192.168.0.2 4845 UDP
+	
+	The UDP and TCP versions for this project are conflated into one a single version, with one file for the server and another file for the client. This combination necessitates an additional argument when loading either the server or the client: “UDP” or “TCP.” The client and server must be launched as the same type to work.
+
+	Within the server, both versions take the input string and parse it for numbers and lowercase letters. The letters are put into the array that will eventually be printed to the server console. Before that though, the parser looks for a one or two digit number (it will not look for any more, so 3-digit offsets will be truncated to only the leftmost 2 digits). The server will then shift (in a circular fashion) the alphabet string ('a-z') that was entered by up to 99 places. The alphabet string is not to exceed 50 digits, although this could be easily increased by changing the defined limit. The resulting string is printed to the server console.
+
+	Within the client, not much is done other than to read in the initial string, desired shift amount, and server destination information. If the connection type is TCP, it takes the extra step of first establishing a connection to the server. This affords the opportunity to catch the error if a connection could not be established if, for example, the server was not running yet. With UDP, this step is not taken, and the connection information to the server is sent along with the message itself, with the hope that it all gets there. Both will bind to a specific port given in the initial arguments. For TCP, the server will also take this extra step of establishing a connection, whereas UDP will just print out any data it receives.
